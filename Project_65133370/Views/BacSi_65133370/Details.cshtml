@@ -1,0 +1,99 @@
+﻿@model Project_65133370.Models.bacSi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>bacSi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.hoBs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hoBs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenBs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenBs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLienLac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLienLac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chucVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chucVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passW)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passW)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role.IDR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role.IDR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chuyenKhoa.tenKhoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chuyenKhoa.tenKhoa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

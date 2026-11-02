@@ -1,0 +1,371 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutBenhNhan.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+<style>
+    .dashboard-container {
+        padding: 20px 0;
+    }
+    
+    .welcome-section {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(17, 153, 142, 0.3);
+    }
+    
+    .welcome-section h1 {
+        margin: 0;
+        font-size: 28px;
+    }
+    
+    .welcome-section p {
+        margin: 10px 0 0 0;
+        opacity: 0.9;
+    }
+    
+    .info-cards {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+    }
+    
+    .info-card {
+        flex: 1;
+        min-width: 280px;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .info-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 15px 0;
+        color: #333;
+        font-size: 18px;
+    }
+    
+    .info-card .value {
+        font-size: 36px;
+        font-weight: bold;
+        color: #11998e;
+    }
+    
+    .info-card .label {
+        color: #888;
+        font-size: 14px;
+    }
+    
+    .services-section {
+        margin-bottom: 30px;
+    }
+    
+    .services-section h2 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 22px;
+    }
+    
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .service-card {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        text-align: center;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        border-color: #11998e;
+        box-shadow: 0 10px 25px rgba(17, 153, 142, 0.2);
+    }
+    
+    .service-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: white;
+    }
+    
+    .service-icon.green { background: linear-gradient(135deg, #11998e, #38ef7d); }
+    .service-icon.blue { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .service-icon.orange { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    .service-icon.cyan { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+    
+    .service-card h3 {
+        margin: 0 0 8px 0;
+        color: #333;
+        font-size: 18px;
+    }
+    
+    .service-card p {
+        margin: 0;
+        color: #888;
+        font-size: 14px;
+    }
+    
+    .appointments-section {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+    }
+    
+    .appointments-section h2 {
+        margin: 0 0 20px 0;
+        color: #333;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .appointment-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .appointment-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background 0.2s;
+    }
+    
+    .appointment-item:hover {
+        background: #f8f9fa;
+    }
+    
+    .appointment-item:last-child {
+        border-bottom: none;
+    }
+    
+    .doctor-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .doctor-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+    }
+    
+    .doctor-details h4 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+    }
+    
+    .doctor-details p {
+        margin: 3px 0 0 0;
+        font-size: 13px;
+        color: #888;
+    }
+    
+    .appointment-time {
+        text-align: right;
+    }
+    
+    .appointment-time .date {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .appointment-time .time {
+        font-size: 13px;
+        color: #888;
+    }
+    
+    .status-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-left: 15px;
+    }
+    
+    .status-badge.pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    .status-badge.confirmed {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    .status-badge.completed {
+        background: #cce5ff;
+        color: #004085;
+    }
+    
+    .no-data {
+        text-align: center;
+        padding: 40px;
+        color: #888;
+    }
+    
+    .health-tips {
+        background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 5px solid #ffc107;
+    }
+    
+    .health-tips h3 {
+        margin: 0 0 15px 0;
+        color: #856404;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .health-tips ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #856404;
+    }
+    
+    .health-tips li {
+        margin-bottom: 8px;
+    }
+</style>
+
+<div class="dashboard-container">
+    <div class="welcome-section">
+        <h1><i class="bi bi-hospital"></i> Xin chào, @Session["Ten"]!</h1>
+        <p>Chúc bạn một ngày tốt lành! Hãy chăm sóc sửa khỏe của bạn mỗi ngày.</p>
+    </div>
+    
+    <div class="info-cards">
+        <div class="info-card">
+            <h3><i class="bi bi-calendar-check"></i> Lịch khám</h3>
+            <div class="value">@ViewBag.TongLichKham</div>
+            <div class="label">Tổng số lịch khám đã đặt</div>
+        </div>
+        <div class="info-card">
+            <h3><i class="bi bi-file-earmark-medical"></i> Bệnh án</h3>
+            <div class="value">@ViewBag.TongBenhAn</div>
+            <div class="label">Tổng số bệnh án</div>
+        </div>
+        <div class="info-card">
+            <h3><i class="bi bi-hourglass-split"></i> Chờ khám</h3>
+            <div class="value">@ViewBag.LichChoKham</div>
+            <div class="label">Lịch khám đang chờ</div>
+        </div>
+    </div>
+    
+    <div class="services-section">
+        <h2><i class="bi bi-heart-pulse"></i> Dịch vụ của chúng tôi</h2>
+        <div class="service-grid">
+            <a href="@Url.Action("IndexBS_BN", "BacSi_65133370")" class="service-card">
+                <div class="service-icon green"><i class="bi bi-person-badge"></i></div>
+                <h3>Đặt lịch khám</h3>
+                <p>Chọn bác sĩ và đặt lịch khám trực tuyến</p>
+            </a>
+            <a href="@Url.Action("IndexLK_BN", "LichKham_65133370")" class="service-card">
+                <div class="service-icon blue"><i class="bi bi-calendar3"></i></div>
+                <h3>Lịch khám của tôi</h3>
+                <p>Xem danh sách các lịch khám đã đặt</p>
+            </a>
+            <a href="@Url.Action("ThongTinCTBN", "BenhNhan_65133370")" class="service-card">
+                <div class="service-icon orange"><i class="bi bi-person-circle"></i></div>
+                <h3>Thông tin cá nhân</h3>
+                <p>Xem và cập nhật thông tin của bạn</p>
+            </a>
+            <a href="@Url.Action("GioiThieuBN", "BenhNhan_65133370")" class="service-card">
+                <div class="service-icon cyan"><i class="bi bi-info-circle"></i></div>
+                <h3>Giới thiệu</h3>
+                <p>Tìm hiểu về phòng khám của chúng tôi</p>
+            </a>
+        </div>
+    </div>
+    
+    <div class="appointments-section">
+        <h2><i class="bi bi-calendar-event"></i> Lich kham sap toi</h2>
+        @if (ViewBag.LichKhamSapToi != null && ((List<Project_65133370.Models.lichKham>)ViewBag.LichKhamSapToi).Count > 0)
+        {
+            <ul class="appointment-list">
+                @foreach (var lich in (List<Project_65133370.Models.lichKham>)ViewBag.LichKhamSapToi)
+                {
+                    <li class="appointment-item">
+                        <div class="doctor-info">
+                            <div class="doctor-avatar"><i class="bi bi-person-badge"></i></div>
+                            <div class="doctor-details">
+                                <h4>BS. @(lich.bacSi != null ? lich.bacSi.hoBs + " " + lich.bacSi.tenBs : "Chua xac dinh")</h4>
+                                <p>@lich.lyDoKham</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div class="appointment-time">
+                                <div class="date">@(lich.ngayKham.HasValue ? lich.ngayKham.Value.ToString("dd/MM/yyyy") : "N/A")</div>
+                                <div class="time">@(lich.ngayKham.HasValue ? lich.ngayKham.Value.ToString("HH:mm") : "")</div>
+                            </div>
+                            <span class="status-badge @(lich.trangThaiKham == 1 ? "pending" : lich.trangThaiKham == 2 ? "confirmed" : "completed")">
+                                @(lich.trangThaiKham == 1 ? "Chờ xác nhận" : lich.trangThaiKham == 2 ? "Đã xác nhận" : "Đã khám")
+                            </span>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div class="no-data">
+                <p>Bạn chưa có lịch khám nào <a href="@Url.Action("IndexBS_BN", "BacSi_65133370")">Đặt lịch ngay</a></p>
+            </div>
+        }
+    </div>
+    
+    <div class="health-tips">
+        <h3><i class="bi bi-lightbulb"></i> Mẹo sức khỏe mỗi ngày</h3>
+        <ul>
+            <li>Uống đủ 2 lít nước mỗi ngày để cơ thể luôn được cấp ẩm</li>
+            <li>Ngủ đủ 7-8 tiếng mỗi đêm để có thể được nghỉ ngơi tốt</li>
+            <li>Tập thể dục ít nhất 30 phút mỗi ngày</li>
+            <li>Ăn nhiều rau xanh và trái cây để bổ xung vitamin</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="meNu">
+            <div id="menu">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary" style="border-radius:20px;">
+                    <div class="container-fluid">
+                        <img src="~/Img/icon/IconPage.png" alt="" style="width:150px; margin-right:100px;" />
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item fw-bold">
+                                    @Html.ActionLink("LOẠI BỆNH", "Index", "Benh_65133370") &nbsp;|&nbsp;
+                                </li>
+                                <li class="nav-item fw-bold">
+                                    @Html.ActionLink("DANH SÁCH BỆNH NHÂN", "Index", "BenhNhan_65133370") &nbsp;|&nbsp;
+                                </li>
+                                <li class="nav-item fw-bold">
+                                    @Html.ActionLink("DANH SÁCH BÁC SĨ", "Index", "BacSi_65133370") &nbsp;|&nbsp;
+                                </li>
+                                <li class="nav-item fw-bold">
+                                    @Html.ActionLink("DS THUỐC", "Index", "Thuoc_65133370") &nbsp;&nbsp;
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="fw-bold">
+                            Xin chào @Session["Ten"]
+
+                            @Html.ActionLink("Đăng xuất", "GioiThieu", "GioiThieu_65133370")
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <div class="body-content ">
+            @RenderBody()
+        </div>
+        <div id="footer" style="background-color:#0004b0; color:white; padding: 10px 10px 10px 10px; border-radius: 15px; margin-top:200px;">
+            <div style="display:flex; flex-direction:column;">
+                <p style="height:5px;">Tên: Phan Trần Thịnh</p>
+                <p style="height:5px;">MSSV: 65133370</p>
+                <p style="height:5px;">Đề tài: Quản lý bệnh nhân phòng khám</p>
+            </div>
+            Copyright &copy; @DateTime.Now.Year
+        </div>
+    </div>
+</body>
+</html>

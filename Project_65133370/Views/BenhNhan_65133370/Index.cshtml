@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Project_65133370.Models.benhNhan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="doc-info"
+    style="gap:20px; margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <h2>Danh sách bệnh nhân</h2>
+
+    <div style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+        @using (Html.BeginForm("TimKiemBenhNhan_Admin", "BenhNhan_65133370", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Mã bệnh nhân:</label>
+                    <input type="text" name="maSo" value="@ViewBag.maSo" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label>Họ tên:</label>
+                    <input type="text" name="hoTen" value="@ViewBag.hoTen" class="form-control" />
+                </div>
+                <div class="col-md-4" style="padding-top: 25px;">
+                    <input type="submit" value="Tìm kiếm" class="btn btn-primary" />
+                    <a href="@Url.Action("Index", "BenhNhan_65133370")" class="btn btn-secondary">Nhập mới</a>
+                </div>
+            </div>
+        }
+    </div>
+
+    <p>
+        @Html.ActionLink("Thêm mới", "Create_Admin", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>Mã BN</th>
+            <th>Họ BN</th>
+            <th>Tên BN</th>
+            <th>Ngày sinh</th>
+            <th>SDT</th>
+            <th>USERN</th>
+            <th>PASSW</th>
+            <th>IDR</th>
+            <th></th>
+        </tr>
+            
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.maSo)</td>
+                <td>@Html.DisplayFor(modelItem => item.hoBn)</td>
+                <td>@Html.DisplayFor(modelItem => item.tenBn)</td>
+                <td>@Html.DisplayFor(modelItem => item.ngaySinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.soLienLac)</td>
+                <td>@Html.DisplayFor(modelItem => item.userN)</td>
+                <td>@Html.DisplayFor(modelItem => item.passW)</td>
+                <td>@Html.DisplayFor(modelItem => item.Role.IDR)</td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit_Admin", new { id = item.maSo }) |
+                    @Html.ActionLink("Xóa", "Delete_Admin", new { id = item.maSo })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

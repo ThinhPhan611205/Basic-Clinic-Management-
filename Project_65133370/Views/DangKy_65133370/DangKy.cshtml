@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_LayoutGioiThieu.cshtml";
+}
+
+<head>
+    <link href="~/Content/Style_DangNhap.css" rel="stylesheet" />
+</head>
+<div class="login-wrapper">
+    <div class="box">
+        <h2>Đăng Ký</h2>
+
+        <form method="post">
+            @*Username*@
+            <div class="form-group">
+                <label for="username">Gmail / Tài khoản</label>
+                <input type="text" id="username" name="username"
+                       class="form-control"
+                       placeholder="Nhập email hoặc tài khoản"
+                       required />
+            </div>
+
+            @*Password*@
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password"
+                       class="form-control"
+                       placeholder="Nhập mật khẩu"
+                       required />
+            </div>
+
+            @*Confirm Password*@
+            <div class="form-group">
+                <label for="confirmPassword">Xác nhận mật khẩu</label>
+                <input type="password" id="confirmPassword" name="confirmPassword"
+                       class="form-control"
+                       placeholder="Nhập lại mật khẩu"
+                       required />
+            </div>
+
+            @*Họ*@
+            <div class="form-group">
+                <label for="hoBn">Họ</label>
+                <input type="text" id="hoBn" name="hoBn"
+                       class="form-control"
+                       placeholder="Nhập họ"
+                       required />
+            </div>
+
+            @*Tên*@
+            <div class="form-group">
+                <label for="tenBn">Tên</label>
+                <input type="text" id="tenBn" name="tenBn"
+                       class="form-control"
+                       placeholder="Nhập tên"
+                       required />
+            </div>
+
+            @*Ngày sinh*@
+            <div class="form-group">
+                <label for="ngaySinh">Ngày sinh</label>
+                <input type="date" id="ngaySinh" name="ngaySinh"
+                       class="form-control"
+                       required />
+            </div>
+            <div class="form-group">
+                <label for="soLienLac">SĐT</label>
+                <input type="text" id="soLienLac" name="soLienLac"
+                       class="form-control"
+                       placeholder="Số điện thoại"
+                       required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-login">
+                Đăng ký
+            </button>
+
+            @if (ViewBag.Error != null)
+            {
+                <span class="text-danger error-msg">
+                    <i class="fa fa-exclamation-triangle"></i> @ViewBag.Error
+                </span>
+            }
+
+            @if (ViewBag.Success != null)
+            {
+                <span class="text-success error-msg">
+                    <i class="fa fa-check-circle"></i> @ViewBag.Success
+                </span>
+            }
+        </form>
+    </div>
+</div>

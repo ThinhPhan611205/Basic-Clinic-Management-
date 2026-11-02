@@ -1,0 +1,26 @@
+﻿@model Project_65133370.Models.tenBenh
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tên bệnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenBenh1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.maBenh }, new {@class = "btn btn-warning"}) |
+    @Html.ActionLink("Trở về", "Index", null, new {@class = "btn btn-primary"})
+</p>

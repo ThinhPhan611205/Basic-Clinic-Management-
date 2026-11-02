@@ -1,0 +1,16 @@
+﻿.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.text {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.btn {
+    width: 200px;
+    margin: 0 auto;
+}

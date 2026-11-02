@@ -1,0 +1,85 @@
+﻿@model Project_65133370.Models.lichKham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+<div class="form-horizontal" style="background:#fff; padding:20px; border-radius:5px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+    <h2>Chỉnh sửa thông tin lịch khám</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.maLich)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.maSo, "Mã số bệnh nhân", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.maSo, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.HiddenFor(model => model.maSo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.lyDoKham, "Lý do khám", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.lyDoKham, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.lyDoKham, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ID, "Bác sĩ khám", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ID, (SelectList)ViewBag.ID, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ngayDatLich, "Ngày đặt lịch", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ngayDatLich, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ngayDatLich, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ngayKham, "Ngày khám", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ngayKham, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ngayKham, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.trangThaiKham, "Trạng thái khám", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("trangThaiKham", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.trangThaiKham, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div style="display:flex; margin-top:20px; gap: 20px;">
+                <div class="form-group">
+                    @Html.ActionLink("Tạo bệnh án", "Create", "BenhAn_65133370", new { maLich = Model.maLich }, new { @class = "btn btn-primary" })
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-2">
+                        <input type="submit" value="Save" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div style="margin-top:10px; margin-left:2px;">
+            @Html.ActionLink("Trở lại", "Index",null, new { @class = "btn btn-primary" })
+        </div>
+    }
+
+</div>

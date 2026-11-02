@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "IndexBS_BN";
+    Layout = "~/Views/Shared/_LayoutBenhNhan.cshtml";
+}
+<style>
+    .listDoc {
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr 3fr;
+    }
+
+    .card-text {
+        margin-bottom: 3px;
+        font: bolder;
+    }
+</style>
+<div class="form-horizontal" style="background:#fff; padding:20px; border-radius:5px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+    <h2>Danh sách bác sĩ</h2>
+    <div class="listDoc">
+        @foreach (var item in Model)
+        {
+            if (item.IDR == 3)
+            {
+                <div class="card" style="width: 18rem;">
+                    <img src="~/Img/icon/doc-m.jpg" class="card-img-top" alt="icon" style="height:150px; object-fit:contain; margin-top:10px;">
+                    <div class="card-body">
+                        <div style="height:160px;">
+                            <h5 class="card-title">@item.hoBs @item.tenBs</h5>
+                            <div class="p-text">
+                                <p class="card-text" style="font:bolder">Chuyên khoa: @item.chuyenKhoa.tenKhoa</p>
+                                <p class="card-text">Gmail: @item.email</p>
+                                <p class="card-text">SĐT: @item.soLienLac</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:flex-end;">
+                            @Html.ActionLink("Đặt lịch khám", "CreateLK_BN", "LichKham_65133370", new { id = item.ID }, new { @class = "btn btn-success btn-sm btn-block" })
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+   <div style="text-align:center;height:60px; margin-top:100px;">
+       @Html.ActionLink("Lịch khám của tôi", "IndexLK_BN","LichKham_65133370",null, new {@class = "btn btn-primary"})
+   </div>
+</div> 
+

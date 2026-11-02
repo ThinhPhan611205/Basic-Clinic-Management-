@@ -1,0 +1,55 @@
+﻿body {
+    background-image: url('../Img/BG/BG-2.jpg');
+}
+
+.titl {
+    justify-items: center;
+    padding: 50px;
+    color: white;
+}
+
+    .titl h4 {
+        font-size: 50px;
+        text-align: center;
+    }
+
+.huongDan {
+    color: white;
+}
+
+.quiTrinh {
+    display: flex;
+    color: white;
+}
+
+    .quiTrinh i {
+        display: flex;
+        align-items: center;
+    }
+
+.card {
+}
+
+.bacSi {
+    padding-top: 100px;
+}
+
+.box-bs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: white;
+    align-items: center;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    height: 400px;
+}
+
+.box-bs-text {
+    padding: 20px;
+}
+
+.doc-img {
+    display: flex;
+    justify-content: end;
+    padding: 30px;
+}

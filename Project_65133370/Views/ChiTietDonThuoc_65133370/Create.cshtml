@@ -1,0 +1,69 @@
+﻿@model Project_65133370.Models.chiTietDonThuoc
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Tao chi tiet don thuoc</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.maDonThuoc)
+    @Html.Hidden("maBenhAnLuu", ViewBag.MaBenhAn as string)
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.maDonThuoc, "Ma don thuoc", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@ViewBag.MaDonThuocHienThi" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.maThuoc, "Ma thuoc", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("maThuoc", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.maThuoc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.soLuong,"So luong", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.soLuong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.soLuong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.lieuDung,"Lieu dung", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.lieuDung, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lieuDung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div style="display:flex; margin-top:20px; gap:20px;">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="submit" value="Tao" class="btn btn-success" />
+                </div>
+            </div>
+            <div>
+                @if (ViewBag.MaBenhAn != null)
+                {
+                    @Html.ActionLink("Tro lai", "Details", "BenhAn_65133370", new { id = ViewBag.MaBenhAn }, new { @class = "btn btn-primary" })
+                }
+                else
+                {
+                    @Html.ActionLink("Tro lai", "Index", null, new { @class = "btn btn-primary" })
+                }
+            </div>
+        </div>
+        
+    </div>
+}

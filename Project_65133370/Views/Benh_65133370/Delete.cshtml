@@ -1,0 +1,32 @@
+﻿@model Project_65133370.Models.tenBenh
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3 style="color:red;">Bạn có chắc chắc muốn xóa loại bệnh này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên bệnh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenBenh1)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Trở lại", "Index",null, new {@class = "btn btn-primary"})
+        </div>
+    }
+</div>

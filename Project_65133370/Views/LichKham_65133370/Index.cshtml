@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Project_65133370.Models.lichKham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+    var grid = new WebGrid(Model, canPage: false, defaultSort: "hoBn", rowsPerPage: 5);
+
+    var listChoDuyet = Model.Where(x => x.trangThaiKham == 1).ToList();
+    var listChoKham = Model.Where(x => x.trangThaiKham == 2).ToList();
+    var listDangKham = Model.Where(x => x.trangThaiKham == 3).ToList();
+    var listDangDieuTri = Model.Where(x => x.trangThaiKham == 4).ToList();
+    var listHoanThanh = Model.Where(x => x.trangThaiKham == 6).ToList();
+    var listHuy = Model.Where(x => x.trangThaiKham == 7).ToList();
+
+    var grid1 = new WebGrid(source: listChoDuyet, canPage: true, rowsPerPage: 5, ajaxUpdateContainerId: "grid1", pageFieldName: "p1");
+    var grid2 = new WebGrid(source: listChoKham, canPage: true, rowsPerPage: 5, ajaxUpdateContainerId: "grid2", pageFieldName: "p2");
+    var grid3 = new WebGrid(source: listDangKham, canPage: true, rowsPerPage: 5, ajaxUpdateContainerId: "grid3", pageFieldName: "p3");
+    var grid4 = new WebGrid(source: listDangDieuTri, canPage: true, rowsPerPage: 5, ajaxUpdateContainerId: "grid4", pageFieldName: "p4");
+    var grid5 = new WebGrid(source: listHoanThanh, canPage: true, rowsPerPage: 5, ajaxUpdateContainerId: "grid5", pageFieldName: "p5");
+    var grid6 = new WebGrid(source: listHuy, canPage: true, rowsPerPage: 5, ajaxUpdateContainerId: "grid6", pageFieldName: "p6");
+}
+
+
+<body>
+    <div class="form-horizontal" style="background:#fff; padding:20px; border-radius:5px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+        <div class="form-horizontal" style="background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <h1>Danh sách lịch khám</h1>
+
+            <h3 class="section-title" style="color:#f0ad4e">1. Danh sách Chờ Duyệt (@listChoDuyet.Count)</h3>
+            <div id="grid1">
+                @grid1.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    footerStyle: "grid-footer",
+                    alternatingRowStyle: "alternatingRowStyle",
+                    columns: grid1.Columns(
+                        grid1.Column("maLich", "Mã"),
+                        grid1.Column("benhNhan.tenBn", "Bệnh nhân"),
+                        grid1.Column("bacSi.tenBs", "Bác sĩ", format: item => item.bacSi.hoBs + " " + item.bacSi.tenBs),
+                        grid1.Column("ngayKham", "Ngày hẹn khám", format: item => item.ngayKham != null ? item.ngayKham.ToString("dd/MM/yyyy HH:mm") : ""),
+                        grid1.Column(format: item => Html.ActionLink("Duyệt", "Edit", new { id = item.maLich }, new { @class = "btn btn-xs btn-warning" }))
+                    )
+                )
+                @if (listChoDuyet.Count == 0)
+                {<p class="text-muted">Không có dữ liệu.</p>}
+            </div>
+        </div>
+       
+        <div class="form-horizontal" style="background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <h3 class="section-title" style="color:#337ab7">2. Danh sách Đã duyệt/Chờ khám (@listChoKham.Count)</h3>
+            <div id="grid2">
+                @grid2.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    footerStyle: "grid-footer",
+                    alternatingRowStyle: "alternatingRowStyle",
+                    columns: grid2.Columns(
+                        grid2.Column("maLich", "Mã"),
+                        grid2.Column("benhNhan.tenBn", "Bệnh nhân"),
+                        grid2.Column("lyDoKham", "Lý do"),
+                        grid2.Column("bacSi.tenBs", "Bác sĩ", format: item => item.bacSi.hoBs + " " + item.bacSi.tenBs),
+                        grid2.Column("ngayKham", "Ngày hẹn khám", format: item => item.ngayKham != null ? item.ngayKham.ToString("dd/MM/yyyy HH:mm") : ""),
+                        grid2.Column(format: item => Html.ActionLink("Khám", "Edit", new { id = item.maLich }, new { @class = "btn btn-xs btn-success" }))
+                    )
+                )
+                @if (listChoKham.Count == 0)
+                {<p class="text-muted">Không có dữ liệu.</p>}
+            </div>
+        </div>
+        
+        <div class="form-horizontal" style="background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <h3 class="section-title" style="color:#5cb85c">3. Danh sách Đang Khám (@listDangKham.Count)</h3>
+            <div id="grid3">
+                @grid3.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    footerStyle: "grid-footer",
+                    alternatingRowStyle: "alternatingRowStyle",
+                    columns: grid3.Columns(
+                        grid3.Column("maLich", "Mã"),
+                        grid3.Column("benhNhan.tenBn", "Bệnh nhân"),
+                        grid3.Column("bacSi.tenBs", "Bác sĩ", format: item => item.bacSi.hoBs + " " + item.bacSi.tenBs),
+                        grid3.Column("trangThaiLichHen.trangThai", "Trạng thái"),
+                        grid3.Column(format: item => Html.ActionLink("Chi tiết", "Edit", new { id = item.maLich }, new { @class = "btn btn-xs btn-success" }))
+                    )
+                )
+                @if (listDangKham.Count == 0)
+                {<p class="text-muted">Không có dữ liệu.</p>}
+            </div>
+        </div>
+        
+
+        @*<h3 class="section-title" style="color:#777">4. Đang điều trị (@listDangDieuTri.Count)</h3>
+        <div id="grid4">
+            @grid3.GetHtml(
+                tableStyle: "table table-bordered table-hover",
+                footerStyle: "grid-footer",
+                alternatingRowStyle: "alternatingRowStyle",
+                columns: grid4.Columns(
+                    grid4.Column("maLich", "Mã"),
+                    grid4.Column("benhNhan.tenBn", "Bệnh nhân"),
+                    grid4.Column("ngayKham", "Ngày khám", format: item => item.ngayKham != null ? item.ngayKham.ToString("dd/MM/yyyy") : ""),
+                    grid4.Column("bacSi.tenBs", "Bác sĩ"),
+                    grid4.Column(format: item => Html.ActionLink("Xem lại", "Edit", new { id = item.maLich }, new { @class = "btn btn-xs btn-default" }))
+                )
+            )
+            @if (listDangDieuTri.Count == 0)
+            {<p class="text-muted">Không có dữ liệu.</p>}
+        </div>*@
+        <div class="form-horizontal" style="background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <h3 class="section-title" style="color:#005bff">4. Hoàn thành(@listHoanThanh.Count)</h3>
+            <div id="grid5">
+                @grid5.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    footerStyle: "grid-footer",
+                    alternatingRowStyle: "alternatingRowStyle",
+                    columns: grid4.Columns(
+                        grid5.Column("maLich", "Mã"),
+                        grid5.Column("benhNhan.tenBn", "Bệnh nhân"),
+                        grid5.Column("ngayKham", "Ngày khám", format: item => item.ngayKham != null ? item.ngayKham.ToString("dd/MM/yyyy") : ""),
+                        grid5.Column("bacSi.tenBs", "Bác sĩ", format: item => item.bacSi.hoBs + " " + item.bacSi.tenBs),
+                        grid5.Column(format: item => Html.ActionLink("Xem lại", "Edit", new { id = item.maLich }, new { @class = "btn btn-xs btn-success" }))
+                    )
+                )
+                @if (listHoanThanh.Count == 0)
+                {<p class="text-muted">Không có dữ liệu.</p>}
+            </div>
+        </div>
+       
+        <div class="form-horizontal" style="background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 20px;">
+            <h3 class="section-title" style="color:#ff0000">5. Đã Hủy(@listHuy.Count)</h3>
+            <div id="grid6">
+                @grid6.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    footerStyle: "grid-footer",
+                    alternatingRowStyle: "alternatingRowStyle",
+                    columns: grid6.Columns(
+                        grid6.Column("maLich", "Mã"),
+                        grid6.Column("benhNhan.tenBn", "Bệnh nhân"),
+                        grid6.Column("ngayKham", "Ngày khám", format: item => item.ngayKham != null ? item.ngayKham.ToString("dd/MM/yyyy") : ""),
+                        grid6.Column("bacSi.tenBs", "Bác sĩ", format: item => item.bacSi.hoBs + " " + item.bacSi.tenBs),
+                        grid6.Column(format: item => Html.ActionLink("Xem lại", "Edit", new { id = item.maLich }, new { @class = "btn btn-xs btn-default" }))
+                    )
+                )
+                @if (listHuy.Count == 0)
+                {<p class="text-muted">Không có dữ liệu.</p>}
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

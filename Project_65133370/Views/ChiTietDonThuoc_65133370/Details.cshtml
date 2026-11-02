@@ -1,0 +1,51 @@
+﻿@model Project_65133370.Models.chiTietDonThuoc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>chiTietDonThuoc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lieuDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lieuDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donThuoc.maDonThuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donThuoc.maDonThuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thuoc.tenThuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thuoc.tenThuoc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

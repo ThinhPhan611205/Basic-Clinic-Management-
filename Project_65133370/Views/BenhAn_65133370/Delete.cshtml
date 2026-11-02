@@ -1,0 +1,97 @@
+﻿@model Project_65133370.Models.benhAn
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>benhAn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayKham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayKham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trieuChung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trieuChung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chuanDoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chuanDoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bacSi.hoBs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bacSi.hoBs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenBenh.tenBenh1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenBenh.tenBenh1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.donThuoc.maDonThuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.donThuoc.maDonThuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lichKham.maSo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lichKham.maSo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.benhNhan.hoBn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.benhNhan.hoBn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThaiLichHen.trangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThaiLichHen.trangThai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

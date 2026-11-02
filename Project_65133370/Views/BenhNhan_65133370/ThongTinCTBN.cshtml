@@ -1,0 +1,115 @@
+﻿@model Project_65133370.Models.benhNhan
+@{
+    ViewBag.Title = "ThongTinCTBN";
+    Layout = "~/Views/Shared/_LayoutBenhNhan.cshtml";
+}
+
+<link href="~/Content/Style_ThongTinCTBN.css" rel="stylesheet"/>
+<div class="container-layout">
+    <div class="sidebar-left">
+        <div class="profile-header">
+            <div class="avatar-box">
+                @if (!string.IsNullOrEmpty(Model.tenBn))
+                {
+                    <span>@Model.tenBn.Substring(0, 1)</span>
+                }
+                else
+                {
+                    <i class="fa fa-user"></i>
+                }
+            </div>
+            <div class="user-name">
+                @Html.DisplayFor(model => model.hoBn) @Html.DisplayFor(model => model.tenBn)
+            </div>
+
+            <div class="user-role" style="margin-top: 5px;">
+                Mã BN: @Html.DisplayFor(model => model.maSo)
+            </div>
+        </div>
+
+        <div class="profile-details">
+            <h5 style="margin-bottom:15px; color:#333;">Thông tin cá nhân</h5>
+
+            <div class="detail-item">
+                <span class="lbl">Ngày sinh:</span>
+                <span class="val">@Html.DisplayFor(model => model.ngaySinh)</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="lbl">Số điện thoại:</span>
+                <span class="val">@Html.DisplayFor(model => model.soLienLac)</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="lbl">Tài khoản (Username):</span>
+                <span class="val">@Html.DisplayFor(model => model.userN)</span>
+            </div>
+
+            <div style="margin-top:20px; text-align:center;">
+                @Html.ActionLink("Chỉnh sửa", "EditBN", new { id = Model.maSo }, new { @class = "btn btn-warning btn-sm btn-block" })
+            </div>
+        </div>
+    </div>
+
+    <div class="content-right">
+        <h2 class="section-title">Lịch Sử Khám Bệnh</h2>
+
+        @if (Model.benhAns != null && Model.benhAns.Count > 0)
+        {
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Ngày khám</th>
+                        <th>Bệnh chẩn đoán</th>
+                        <th>Triệu chứng</th>
+                        <th>Bác sĩ</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ba in Model.benhAns.OrderByDescending(x => x.ngayKham))
+                    {
+                        <tr>
+                            <td>
+                                @if (ba.ngayKham.HasValue)
+                                {
+                                    @ba.ngayKham.Value.ToString("dd/MM/yyyy")
+                                }
+                            </td>
+                            <td style="color:#d9534f; font-weight:500;">
+                                @(ba.tenBenh != null ? ba.tenBenh.tenBenh1 : "Chưa rõ")
+                            </td>
+                            <td>@ba.trieuChung</td>
+                            <td>
+                                @if (ba.bacSi != null)
+                                {
+                                    @: @ba.bacSi.hoBs @ba.bacSi.tenBs
+                                }
+                            </td>
+                            <td>
+                                @if (ba.trangThaiLichHen != null)
+                                {
+                                    <span style="background-color: #e3f2fd; color: #0d47a1; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;">
+                                        @ba.trangThaiLichHen.trangThai
+                                    </span>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("DetailsBN", "BenhAn_65133370", new { id = ba.maBenhAn })" class="btn btn-info btn-xs">Xem chi tiết</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div style="text-align:center; padding: 40px; color:#999;">
+                <h4>Bệnh nhân này chưa có hồ sơ bệnh án nào.</h4>
+                <p>Thông tin khám bệnh mới sẽ xuất hiện tại đây.</p>
+            </div>
+        }
+    </div>
+
+</div>

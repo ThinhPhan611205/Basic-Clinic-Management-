@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Project_65133370.Models.donThuoc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.maDonThuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngayKeDon)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(model => item.maDonThuoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngayKeDon)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maDonThuoc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maDonThuoc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maDonThuoc })
+        </td>
+    </tr>
+}
+
+</table>

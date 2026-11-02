@@ -1,0 +1,67 @@
+﻿@model Project_65133370.Models.lichKham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>lichKham</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.lyDoKham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lyDoKham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayDatLich)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayDatLich)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayKham)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayKham)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bacSi.hoBs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bacSi.hoBs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.benhNhan.hoBn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.benhNhan.hoBn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThaiLichHen.trangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThaiLichHen.trangThai)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maLich }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

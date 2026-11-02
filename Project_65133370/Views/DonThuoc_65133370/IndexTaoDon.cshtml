@@ -1,0 +1,58 @@
+﻿@model Project_65133370.Models.donThuoc
+
+@{
+    ViewBag.Title = "Kê Đơn Thuốc";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>@ViewBag.TrangThai Đơn Thuốc</h2>
+
+@using (Html.BeginForm("IndexTaoDon", "DonThuoc_65133370", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <input type="hidden" name="maBenhAnLuu" value="@ViewBag.MaBenhAnLuu" />
+        @Html.HiddenFor(model => model.maDonThuoc)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ma Don Thuoc</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@Model.maDonThuoc" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ngày Kê Đơn</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ngayKeDon, new
+                    {
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            type =
+                         "date"
+                        }
+                    })
+                @Html.ValidationMessageFor(model => model.ngayKeDon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu Đơn Thuốc" class="btn btn-primary" />
+
+                @if (ViewBag.MaBenhAnLuu != null)
+                {
+                    @Html.ActionLink("Hủy / Quay lại", "Details", "BenhAn_65133370", new { id = ViewBag.MaBenhAnLuu }, new
+                        {
+                            @class = "btn btn-default"
+                        })
+                }
+            </div>
+        </div>
+    </div>
+}

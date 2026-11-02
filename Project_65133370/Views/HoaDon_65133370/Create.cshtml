@@ -1,0 +1,59 @@
+﻿@model Project_65133370.Models.hoaDon
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+@{
+    var listDichVu = ViewBag.ListDichVu as List<Project_65133370.Models.DichVu>;
+}
+
+<h2>Lập Hóa Đơn</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <input type="hidden" name="maBenhAn" value="@ViewBag.MaBenhAn" />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mã Hóa Đơn</label>
+            <div class="col-md-10">
+                <input type="text" name="maHd" value="@ViewBag.MaHdGoiY" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tiền Thuốc (Từ đơn)</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@string.Format("{0:N0} đ", ViewBag.TienThuoc)" readonly style="background-color:#fff3cd; font-weight:bold;" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Dịch vụ sử dụng</label>
+            <div class="col-md-10">
+                <div style="border:1px solid #ccc; padding:10px; max-height:200px; overflow-y:scroll;">
+                    @foreach (var dv in listDichVu)
+                    {
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="selectedDichVu" value="@dv.maDichVu" />
+                                @dv.tenDichVu - <strong>@string.Format("{0:N0}", dv.giaTien)</strong>
+                            </label>
+                        </div>
+                    }
+                </div>
+                <p class="help-block">Tích chọn các dịch vụ bệnh nhân đã thực hiện.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Xác nhận & Tạo Hóa Đơn" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}

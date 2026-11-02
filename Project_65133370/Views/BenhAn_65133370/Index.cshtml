@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Project_65133370.Models.benhAn>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ngayKham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trieuChung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.chuanDoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bacSi.hoBs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tenBenh.tenBenh1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.donThuoc.maDonThuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lichKham.maSo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.benhNhan.hoBn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trangThaiLichHen.trangThai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngayKham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trieuChung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.chuanDoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bacSi.hoBs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenBenh.tenBenh1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.donThuoc.maDonThuoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lichKham.maSo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.benhNhan.hoBn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangThaiLichHen.trangThai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maBenhAn }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maBenhAn }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maBenhAn })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model Project_65133370.Models.hoaDon
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>hoaDon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayLap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayLap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tongTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tongTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangThaiThanhToan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangThaiThanhToan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.benhAn.maSo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.benhAn.maSo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maHd }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Project_65133370.Models.hoaDon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ngayLap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tongTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trangThaiThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.benhAn.maSo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngayLap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tongTien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangThaiThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.benhAn.maSo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maHd }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maHd }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maHd })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Project_65133370.Models.benhNhan>
+
+@{
+    ViewBag.Title = "IndexBN_BS";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "hoBn", rowsPerPage: 10);
+}
+<link href="~/Content/Style_IndexBN.css" rel="stylesheet"/>
+<body>
+    <div class="form-horizontal" style="background:#fff; padding:20px; border-radius:5px; box-shadow:0 0 10px rgba(0,0,0,0.1); width:400px;height:250px;margin-left:35%;">
+        @using (Html.BeginForm("TimKiemBenhNhan", "BenhNhan_65133370", FormMethod.Get))
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <td>Mã bệnh nhân</td>
+                    <td>
+                        <input type="text" name="maSo" value="@ViewBag.maSo" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Họ tên bệnh nhân</td>
+                    <td>
+                        <input type="text" name="hoTen" value="@ViewBag.hoTen" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Mã bệnh án</td>
+                    <td>
+                        <input type="text" name="maBenhAn" value="@ViewBag.maBenhAn" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Tìm kiếm"
+                               class="btn btn-primary" />
+                        <a href="@Url.Action("IndexBN_BS","BenhNhan_65133370")"
+                           class="btn btn-secondary">
+                            Nhập mới
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div class="form-horizontal" style="background:#fff; padding:20px; border-radius:5px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+        <h1>Danh sách bệnh nhân</h1>
+        <p>
+            @Html.ActionLink("Thêm bệnh nhân", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <div style="align-items:center; margin-top:20px">
+            @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+              columns: new[]
+             {
+                grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+                grid.Column("maSo","Mã bệnh nhân"),
+                grid.Column("hoBn","Họ"  ),
+                grid.Column("tenBn","Tên"),
+                grid.Column("ngaySinh","Ngày sinh",format:@<text> @item.ngaySinh.ToString("dd/MM/yyyy")</text>),
+                grid.Column("soLienLac","SĐT"),
+                grid.Column(format: (item) => Html.ActionLink("Xem chi tiết", "Details","BenhNhan_65133370", new { id = item.maSo },"BenhNhan_65133370")),
+                grid.Column(format: (item) => Html.ActionLink("Xóa", "Delete","BenhNhan_65133370", new { id = item.maSo },"BenhNhan_65133370"))
+                }
+                )
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+# Visual Studio user and workspace state
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build and test output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+TestResults/
+*.pdb
+
+# NuGet packages restored from packages.config
+packages/
+
+# Local data, logs, and database backups
+App_Data/*
+*.mdf
+*.ldf
+*.bak
+*.log
+logs/
+
+# Machine-specific or secret configuration
+.env
+.env.*
+!.env.example
+Web.local.config
+Web.*.local.config
+*.publishsettings
+*.pubxml.user
+
+# Publish output
+publish/
+_PublishedWebsites/

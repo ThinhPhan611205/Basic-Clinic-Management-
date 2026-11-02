@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Project_65133370.Models.chiTietDonThuoc>
+@{
+    ViewBag.Title = "IndexEdit";
+    Layout = "~/Views/Shared/_LayoutBacSi.cshtml";
+    string currentMaDon = ViewBag.MaDonThuoc as string;
+}
+
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Them thuoc", "Create", new { maDonThuoc = currentMaDon }, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.soLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lieuDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.donThuoc.maDonThuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thuoc.tenThuoc)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lieuDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.donThuoc.maDonThuoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thuoc.tenThuoc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.maDonThuoc }) |
+                @Html.ActionLink("Details", "Details", new { id = item.maDonThuoc }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.maDonThuoc })
+            </td>
+        </tr>
+    }
+
+</table>

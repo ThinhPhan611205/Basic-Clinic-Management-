@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Project_65133370.Models.tenBenh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="doc-info"
+     style="gap:20px; margin-bottom: 20px; padding: 15px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <h2>Danh sách bệnh</h2>
+
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tên bệnh
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenBenh1)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.maBenh }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.maBenh })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
